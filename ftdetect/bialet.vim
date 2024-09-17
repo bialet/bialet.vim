@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead *.wren setfiletype wren
+autocmd BufNewFile,BufRead *.wren setfiletype bialet
