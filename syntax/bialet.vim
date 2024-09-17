@@ -37,14 +37,14 @@ syn match wrenComment "\%^#!.*"
 
 syn keyword wrenMisplacedKeyword static
 
-syn region htmlString	 contained start=+"+ end=+"+
-syn region htmlString	 contained start=+'+ end=+'+
-syn match htmlValue	 contained "="
+syn region htmlString	contained start=+"+ end=+"+
+syn region htmlString	contained start=+'+ end=+'+
+syn match htmlValue	contained "="
 
 syn region htmlTag start=+<[^/]+ end=+>+ fold contains=htmlTagN,htmlString,htmlArg,htmlValue
 syn region htmlEndTag start=+</+ end=+>+ contains=htmlTagN
-syn match htmlTagN contained +<\[-a-zA-Z0-9]\++hs=s+1 contains=htmlTagName,htmlSpecialTagName
-syn match htmlTagN contained +</[-a-zA-Z0-9]\++hs=s+2 contains=htmlTagName,htmlSpecialTagName
+syn match htmlTagN contained +<\[-a-zA-Z0-9]\++hs=s+1 contains=htmlTagName
+syn match htmlTagN contained +</[-a-zA-Z0-9]\++hs=s+2 contains=htmlTagName
 
 syn keyword htmlTagName contained address applet area a base basefont
 syn keyword htmlTagName contained big blockquote br caption center
@@ -96,15 +96,13 @@ hi def link wrenToplevel wrenIdentifier
 hi def link wrenComment Comment
 hi def link wrenTodo Todo
 hi def link wrenMisplacedKeyword Error
-hi def link wrenHtmlTag Comment
-hi def link wrenHandlebars Type
 
+hi def link wrenHandlebars Type
 hi def link htmlTag	Constant
 hi def link htmlEndTag Constant
 hi def link htmlArg	Constant
 hi def link htmlTagName	Constant
-hi def link htmlSpecialTagName Constant
 hi def link htmlValue PreProc
 hi def link htmlString PreProc
 
-let b:current_syntax = "wren"
+let b:current_syntax = "bialet"
