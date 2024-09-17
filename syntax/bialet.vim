@@ -2,6 +2,7 @@ if exists("b:current_syntax")
     finish
 endif
 
+syntax keyword bialetGlobalObjects Request Response Cookie Session Json Util Config Db Http Date
 syn keyword wrenNull null
 syn keyword wrenBoolean true false
 syn match wrenNumber "\v<\d+(\.\d+)?>|\.\d+>"
@@ -68,7 +69,9 @@ syn keyword htmlTagName contained progress rb rp rt rtc ruby search section
 syn keyword htmlTagName contained slot source summary template time track
 syn keyword htmlTagName contained video wbr math svg
 
-syn region wrenHandlebars contains=wrenNull,wrenBoolean,wrenNumber,wrenString,wrenSingleString,wrenIdentifier,wrenKeyword,wrenOperatorDef,wrenOperator,htmlTag,HtmlEndTag start="{{" end="}}"
+syn region wrenHandlebars contains=wrenNull,wrenBoolean,wrenNumber,wrenString,wrenSingleString,wrenIdentifier,wrenKeyword,wrenOperatorDef,wrenOperator,htmlTag,htmlEndTag,bialetGlobalObjects start="{{" end="}}"
+
+hi def link bialetGlobalObjects Constant
 
 hi def link wrenNull Constant
 hi def link wrenBoolean Boolean
