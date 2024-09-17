@@ -71,7 +71,7 @@ syn keyword htmlTagName contained video wbr math svg
 
 syn region wrenHandlebars contains=wrenNull,wrenBoolean,wrenNumber,wrenString,wrenSingleString,wrenIdentifier,wrenKeyword,wrenOperatorDef,wrenOperator,htmlTag,htmlEndTag,bialetGlobalObjects start="{{" end="}}"
 
-hi def link bialetGlobalObjects Constant
+hi bialetGlobalObjects cterm=bold gui=bold
 
 hi def link wrenNull Constant
 hi def link wrenBoolean Boolean
