@@ -38,8 +38,8 @@ syn match wrenComment "\%^#!.*"
 
 syn keyword wrenMisplacedKeyword static
 
-syn region htmlString	contained start=+"+ end=+"+
-syn region htmlString	contained start=+'+ end=+'+
+syn region htmlString	contained start=+"+ end=+"+ contains=wrenHandlebars
+syn region htmlString	contained start=+'+ end=+'+ contains=wrenHandlebars
 syn match htmlValue	contained "="
 
 syn region htmlTag start=+<[^/]+ end=+>+ fold contains=htmlTagN,htmlString,htmlArg,htmlValue
