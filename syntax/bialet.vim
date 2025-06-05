@@ -2,7 +2,7 @@ if exists("b:current_syntax")
     finish
 endif
 
-syntax keyword bialetGlobalObjects Request Response Cookie Session Json Util Config Db Http Date File
+syntax keyword bialetGlobalObjects Request Response Cookie Session Json Util Config Db Http Date File Cron
 syn keyword wrenNull null
 syn keyword wrenBoolean true false
 syn match wrenNumber "\v<\d+(\.\d+)?>|\.\d+>"
