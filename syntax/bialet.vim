@@ -29,7 +29,7 @@ syn match wrenOperator "\V!\|~\|-\|==\?\|!=\|<=\?\|>=\?\|...\?\||\|&\|+\|-\|*\|/
 
 syn match wrenField "\v_\w+" display
 syn match wrenStaticField "\v__\w+" display
-syn match wrenToplevel "\v<[A-Z]\w*" display
+syn match wrenToplevel "\v[A-Z]\w*" display
 
 syn keyword wrenTodo contained TODO FIXME XXX
 syn match wrenComment contains=wrenTodo "\v//.*$"
@@ -44,7 +44,7 @@ syn match htmlValue	contained "="
 
 syn region htmlTag start=+<[^/]+ end=+>+ fold contains=htmlTagN,htmlString,htmlArg,htmlValue
 syn region htmlEndTag start=+</+ end=+>+ contains=htmlTagN
-syn match htmlTagN contained +<\[-a-zA-Z0-9]\++hs=s+1 contains=htmlTagName
+syn match htmlTagN contained +<[-a-zA-Z0-9]\++hs=s+1 contains=htmlTagName
 syn match htmlTagN contained +</[-a-zA-Z0-9]\++hs=s+2 contains=htmlTagName
 
 syn keyword htmlTagName contained address applet area a base basefont
