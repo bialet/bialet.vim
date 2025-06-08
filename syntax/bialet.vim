@@ -46,6 +46,7 @@ syn region htmlTag start=+<[^/]+ end=+>+ fold contains=htmlTagN,htmlString,htmlA
 syn region htmlEndTag start=+</+ end=+>+ contains=htmlTagN
 syn match htmlTagN contained +<[-a-zA-Z0-9]\++hs=s+1 contains=htmlTagName
 syn match htmlTagN contained +</[-a-zA-Z0-9]\++hs=s+2 contains=htmlTagName
+syn match htmlDoctype "<!doctype html>"
 
 syn keyword htmlTagName contained address applet area a base basefont
 syn keyword htmlTagName contained big blockquote br caption center
@@ -105,6 +106,7 @@ hi def link htmlTag	Constant
 hi def link htmlEndTag Constant
 hi def link htmlArg	Constant
 hi def link htmlTagName	Constant
+hi def link htmlDoctype Constant
 hi def link htmlValue PreProc
 hi def link htmlString PreProc
 
