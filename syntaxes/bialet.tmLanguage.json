@@ -161,8 +161,9 @@
             "0": { "name": "punctuation.definition.tag.end.html" }
           },
           "patterns": [
-            { "include": "#html-attributes" },
-            { "include": "#html-strings" }
+            { "include": "#html-strings" },
+            { "include": "#bialet-handlebars" },
+            { "include": "#html-attributes" }
           ]
         }
       ]

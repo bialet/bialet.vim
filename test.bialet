@@ -8,4 +8,14 @@ class Person {
 var hello = <p>Text</p>
 var msg = "Hello World %(hello)"
 
+var tmpl = <div class="{{ cls }}">
+  <p>{{ name }}</p>
+</div>
+
+var bare = <input {{ attrs }} />
+
+var mixed = <div class="x" {{ more }} id="y">
+  {{ content }}
+</div>
+
 // Some comment
