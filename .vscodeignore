@@ -1,0 +1,8 @@
+.git
+ftdetect/
+ftplugin/
+lua/
+syntax/
+test.bialet
+README.md
+LICENSE

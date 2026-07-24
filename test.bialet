@@ -1,0 +1,11 @@
+class Person {
+  construct some(name) {
+    _name = name
+  }
+}
+
+`SELECT * FROM query`.fetch
+var hello = <p>Text</p>
+var msg = "Hello World %(hello)"
+
+// Some comment
