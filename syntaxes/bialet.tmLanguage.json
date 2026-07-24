@@ -91,7 +91,7 @@
           ]
         },
         {
-          "name": "string.quoted.template.wren",
+          "name": "string.quoted.backtick.bialet",
           "begin": "`",
           "end": "`",
           "beginCaptures": {
@@ -146,26 +146,10 @@
 
     "bialet-html": {
       "patterns": [
-        {
-          "include": "#html-doctype"
-        },
-        {
-          "name": "meta.tag.html.wren",
-          "begin": "<(/)?([a-zA-Z][a-zA-Z0-9-]*)",
-          "end": ">",
-          "beginCaptures": {
-            "1": { "name": "punctuation.definition.tag.begin.html" },
-            "2": { "name": "entity.name.tag.html" }
-          },
-          "endCaptures": {
-            "0": { "name": "punctuation.definition.tag.end.html" }
-          },
-          "patterns": [
-            { "include": "#html-strings" },
-            { "include": "#bialet-handlebars" },
-            { "include": "#html-attributes" }
-          ]
-        }
+        { "include": "#html-doctype" },
+        { "include": "#html-void-tag" },
+        { "include": "#html-self-closing-tag" },
+        { "include": "#html-element" }
       ]
     },
 
@@ -174,6 +158,62 @@
         {
           "name": "meta.tag.sgml.doctype.html",
           "match": "(?i)<!doctype\\s+html\\s*>"
+        }
+      ]
+    },
+
+    "html-void-tag": {
+      "patterns": [
+        {
+          "name": "meta.tag.void.html.wren",
+          "match": "<(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)\\b([^>]*?)\\s*/?>",
+          "captures": {
+            "1": { "name": "entity.name.tag.html" }
+          }
+        }
+      ]
+    },
+
+    "html-self-closing-tag": {
+      "patterns": [
+        {
+          "name": "meta.tag.self-closing.html.wren",
+          "match": "<([a-zA-Z][\\w-]*)\\b[^>]*?/>",
+          "captures": {
+            "1": { "name": "entity.name.tag.html" }
+          }
+        }
+      ]
+    },
+
+    "html-element": {
+      "patterns": [
+        {
+          "name": "meta.element.html.wren",
+          "begin": "<([a-zA-Z][\\w-]*)",
+          "end": "</\\1\\s*>",
+          "beginCaptures": {
+            "1": { "name": "entity.name.tag.html" }
+          },
+          "endCaptures": {
+            "1": { "name": "entity.name.tag.html" }
+          },
+          "patterns": [
+            { "include": "#html-attributes" },
+            { "include": "#html-strings" },
+            { "include": "#bialet-handlebars" },
+            { "include": "#bialet-html" },
+            { "include": "#html-template-text" }
+          ]
+        }
+      ]
+    },
+
+    "html-template-text": {
+      "patterns": [
+        {
+          "name": "text.html.wren",
+          "match": "[^{<]+"
         }
       ]
     },

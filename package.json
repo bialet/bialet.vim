@@ -25,5 +25,17 @@
       "scopeName": "source.wren",
       "path": "./syntaxes/bialet.tmLanguage.json"
     }]
+  },
+  "configurationDefaults": {
+    "[wren]": {
+      "editor.tokenColorCustomizations": {
+        "textMateRules": [
+          {
+            "scope": "string.quoted.backtick.bialet",
+            "settings": { "foreground": "#9CDCFE" }
+          }
+        ]
+      }
+    }
   }
 }
