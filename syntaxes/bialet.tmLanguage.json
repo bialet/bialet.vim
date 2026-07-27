@@ -1,395 +1,83 @@
 {
-  "name": "Wren (Bialet)",
-  "scopeName": "source.wren",
-  "fileTypes": ["wren"],
-  "patterns": [
-    { "include": "#comments" },
-    { "include": "#strings" },
-    { "include": "#bialet-handlebars" },
-    { "include": "#bialet-html" },
-    { "include": "#bialet-extensions" },
-    { "include": "#keywords" },
-    { "include": "#constants" },
-    { "include": "#numbers" },
-    { "include": "#definitions" },
-    { "include": "#operators" },
-    { "include": "#identifiers" }
-  ],
-  "repository": {
-    "comments": {
-      "patterns": [
-        {
-          "name": "comment.line.shebang.wren",
-          "match": "\\A#!.*"
-        },
-        {
-          "name": "comment.block.wren",
-          "begin": "/\\*",
-          "end": "\\*/",
-          "beginCaptures": {
-            "0": { "name": "punctuation.definition.comment.begin.wren" }
-          },
-          "endCaptures": {
-            "0": { "name": "punctuation.definition.comment.end.wren" }
-          },
-          "patterns": [
-            { "include": "#comments" },
-            { "include": "#code-tags" }
-          ]
-        },
-        {
-          "name": "comment.line.double-slash.wren",
-          "begin": "//",
-          "end": "$",
-          "beginCaptures": {
-            "0": { "name": "punctuation.definition.comment.wren" }
-          },
-          "patterns": [
-            { "include": "#code-tags" }
-          ]
-        }
-      ]
-    },
-
-    "code-tags": {
-      "patterns": [
-        {
-          "name": "keyword.codetag.wren",
-          "match": "\\b(TODO|FIXME|XXX)\\b"
-        }
-      ]
-    },
-
-    "strings": {
-      "patterns": [
-        {
-          "name": "string.quoted.double.wren",
-          "begin": "\"",
-          "end": "\"",
-          "beginCaptures": {
-            "0": { "name": "punctuation.definition.string.begin.wren" }
-          },
-          "endCaptures": {
-            "0": { "name": "punctuation.definition.string.end.wren" }
-          },
-          "patterns": [
-            { "include": "#escapes" }
-          ]
-        },
-        {
-          "name": "string.quoted.single.wren",
-          "begin": "'",
-          "end": "'",
-          "beginCaptures": {
-            "0": { "name": "punctuation.definition.string.begin.wren" }
-          },
-          "endCaptures": {
-            "0": { "name": "punctuation.definition.string.end.wren" }
-          },
-          "patterns": [
-            { "include": "#escapes" }
-          ]
-        },
-        {
-          "name": "string.quoted.backtick.bialet",
-          "begin": "`",
-          "end": "`",
-          "beginCaptures": {
-            "0": { "name": "punctuation.definition.string.begin.wren" }
-          },
-          "endCaptures": {
-            "0": { "name": "punctuation.definition.string.end.wren" }
-          },
-          "patterns": [
-            { "include": "#escapes" }
-          ]
-        }
-      ]
-    },
-
-    "escapes": {
-      "patterns": [
-        {
-          "name": "constant.character.escape.wren",
-          "match": "\\\\[0\"'`\\\\abfnrtv]|\\\\x[0-9a-fA-F]{2}|\\\\u[0-9a-fA-F]{4}"
-        }
-      ]
-    },
-
-    "bialet-handlebars": {
-      "name": "meta.embedded.handlebars.wren",
-      "begin": "\\{\\{",
-      "end": "\\}\\}",
-      "beginCaptures": {
-        "0": { "name": "punctuation.section.embedded.begin.wren" }
-      },
-      "endCaptures": {
-        "0": { "name": "punctuation.section.embedded.end.wren" }
-      },
-      "patterns": [
-        { "include": "#handlebars-content" }
-      ]
-    },
-
-    "handlebars-content": {
-      "patterns": [
-        { "include": "#constants" },
-        { "include": "#numbers" },
-        { "include": "#strings" },
-        { "include": "#operators" },
-        { "include": "#bialet-extensions" },
-        { "include": "#keywords" },
-        { "include": "#identifiers" },
-        { "include": "#bialet-html" }
-      ]
-    },
-
-    "bialet-html": {
-      "patterns": [
-        { "include": "#html-doctype" },
-        { "include": "#html-void-tag" },
-        { "include": "#html-self-closing-tag" },
-        { "include": "#html-element" }
-      ]
-    },
-
-    "html-doctype": {
-      "patterns": [
-        {
-          "name": "meta.tag.sgml.doctype.html",
-          "match": "(?i)<!doctype\\s+html\\s*>"
-        }
-      ]
-    },
-
-    "html-void-tag": {
-      "patterns": [
-        {
-          "name": "meta.tag.void.html.wren",
-          "match": "<(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)\\b([^>]*?)\\s*/?>",
-          "captures": {
-            "1": { "name": "entity.name.tag.html" }
-          }
-        }
-      ]
-    },
-
-    "html-self-closing-tag": {
-      "patterns": [
-        {
-          "name": "meta.tag.self-closing.html.wren",
-          "match": "<([a-zA-Z][\\w-]*)\\b[^>]*?/>",
-          "captures": {
-            "1": { "name": "entity.name.tag.html" }
-          }
-        }
-      ]
-    },
-
-    "html-element": {
-      "patterns": [
-        {
-          "name": "meta.element.html.wren",
-          "begin": "<([a-zA-Z][\\w-]*)",
-          "end": "</\\1\\s*>",
-          "beginCaptures": {
-            "1": { "name": "entity.name.tag.html" }
-          },
-          "endCaptures": {
-            "1": { "name": "entity.name.tag.html" }
-          },
-          "patterns": [
-            { "include": "#html-attributes" },
-            { "include": "#html-strings" },
-            { "include": "#bialet-handlebars" },
-            { "include": "#bialet-html" },
-            { "include": "#html-template-text" }
-          ]
-        }
-      ]
-    },
-
-    "html-template-text": {
-      "patterns": [
-        {
-          "name": "text.html.wren",
-          "match": "[^{<]+"
-        }
-      ]
-    },
-
-    "html-attributes": {
-      "patterns": [
-        {
-          "name": "entity.other.attribute-name.html",
-          "match": "\\b([a-zA-Z][a-zA-Z0-9-]*)\\s*(?==)",
-          "captures": {
-            "1": { "name": "entity.other.attribute-name.html" }
-          }
-        }
-      ]
-    },
-
-    "html-strings": {
-      "patterns": [
-        {
-          "name": "string.quoted.double.html",
-          "begin": "\"",
-          "end": "\"",
-          "beginCaptures": {
-            "0": { "name": "punctuation.definition.string.begin.html" }
-          },
-          "endCaptures": {
-            "0": { "name": "punctuation.definition.string.end.html" }
-          },
-          "patterns": [
-            { "include": "#bialet-handlebars" }
-          ]
-        },
-        {
-          "name": "string.quoted.single.html",
-          "begin": "'",
-          "end": "'",
-          "beginCaptures": {
-            "0": { "name": "punctuation.definition.string.begin.html" }
-          },
-          "endCaptures": {
-            "0": { "name": "punctuation.definition.string.end.html" }
-          },
-          "patterns": [
-            { "include": "#bialet-handlebars" }
-          ]
-        }
-      ]
-    },
-
-    "bialet-extensions": {
-      "patterns": [
-        {
-          "name": "support.class.bialet",
-          "match": "\\b(Request|Response|Cookie|Session|Json|Util|Config|Db|Http|Date|File|Cron)\\b"
-        },
-        {
-          "name": "support.function.bialet",
-          "match": "\\b(render|redirect|json|html|sql)\\b"
-        },
-        {
-          "name": "keyword.other.bialet",
-          "match": "\\b(get|post|put|delete)\\b"
-        }
-      ]
-    },
-
-    "keywords": {
-      "patterns": [
-        {
-          "name": "keyword.control.conditional.wren",
-          "match": "\\b(if|else)\\b"
-        },
-        {
-          "name": "keyword.control.loop.wren",
-          "match": "\\b(for|while|break|continue)\\b"
-        },
-        {
-          "name": "storage.type.wren",
-          "match": "\\b(class|var|construct|import|as|is|super|in)\\b"
-        },
-        {
-          "name": "keyword.control.flow.wren",
-          "match": "\\b(return|this|new)\\b"
-        },
-        {
-          "name": "storage.modifier.wren",
-          "match": "\\b(static|foreign)\\b"
-        }
-      ]
-    },
-
-    "constants": {
-      "patterns": [
-        {
-          "name": "constant.language.null.wren",
-          "match": "\\bnull\\b"
-        },
-        {
-          "name": "constant.language.boolean.wren",
-          "match": "\\b(true|false)\\b"
-        }
-      ]
-    },
-
-    "numbers": {
-      "patterns": [
-        {
-          "name": "constant.numeric.wren",
-          "match": "\\b(\\d+(\\.\\d+)?|\\.\\d+)\\b"
-        }
-      ]
-    },
-
-    "definitions": {
-      "patterns": [
-        {
-          "name": "meta.definition.foreign-class.wren",
-          "match": "^\\s*foreign\\s+class\\b"
-        },
-        {
-          "name": "meta.definition.foreign-method.wren",
-          "match": "^\\s*foreign\\s+(static\\s+)?(\\w+)",
-          "captures": {
-            "1": { "name": "storage.modifier.wren" },
-            "2": { "name": "entity.name.function.wren" }
-          }
-        },
-        {
-          "name": "meta.definition.constructor.wren",
-          "match": "^\\s*construct\\s+(\\w+)\\s*(?=\\(|\\s*\\{)",
-          "captures": {
-            "1": { "name": "entity.name.function.wren" }
-          }
-        },
-        {
-          "name": "meta.definition.operator.wren",
-          "match": "^\\s*([!~\\-]|==?|!=|<=?|>=?|\\.\\.\\.?|\\||\\&|[+*/%])\\s*(?=\\(|\\s*\\{)",
-          "captures": {
-            "1": { "name": "entity.name.function.wren" }
-          }
-        },
-        {
-          "name": "meta.definition.method.wren",
-          "match": "^\\s*(static\\s+)?(\\w+=?)\\s*(?=\\(|\\s*\\{)",
-          "captures": {
-            "1": { "name": "storage.modifier.wren" },
-            "2": { "name": "entity.name.function.wren" }
-          }
-        }
-      ]
-    },
-
-    "operators": {
-      "patterns": [
-        {
-          "name": "keyword.operator.wren",
-          "match": "\\.\\.\\.?|==?|!=|<=?|>=?|[!~|&+\\-*/%=]"
-        }
-      ]
-    },
-
-    "identifiers": {
-      "patterns": [
-        {
-          "name": "variable.other.static.wren",
-          "match": "\\b__[a-zA-Z_]\\w*\\b"
-        },
-        {
-          "name": "variable.other.field.wren",
-          "match": "\\b_[a-zA-Z_]\\w*\\b"
-        },
-        {
-          "name": "entity.name.type.class.wren",
-          "match": "\\b[A-Z][a-zA-Z0-9_]*\\b"
-        }
-      ]
-    }
-  }
+	"name": "Wren",
+	"scopeName": "source.wren",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#classes"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#inline-html-strings"
+		},
+		{
+			"include": "#queries"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.reserved.wren",
+				"match": "\\b(as|break|class|construct|continue|else|false|for|foreign|if|import|in|is|null|return|static|super|this|true|var|while)\\b"
+			}]
+		},
+		"classes": {
+			"patterns": [{
+				"name": "support.type.wren",
+				"match": "\\b(Bool|Class|Fiber|Fn|List|Map|Null|Num|Object|Range|Sequence|String|System|Request|Response|Cookie|Session|Json|Util|Config|Db|Http|Date|File|Markdown)\\b"
+			},
+			{
+				"name": "support.function.wren",
+				"match": "\\.\\s*(count|map|query|fetch|first|val|toNum|toBool|save|order|to)\\b"
+			}
+		]
+		},
+		"strings": {
+			"name": "string.quoted.double.wren",
+			"begin": "(\"|')",
+			"end": "\\1",
+			"patterns": [
+				{ "include": "#strings-interpolation" },
+				{
+					"name": "constant.character.escape.wren",
+					"match": "\\\\."
+				}
+			]
+		},
+		"inline-html-strings": {
+			"name": "string.quoted.html.wren",
+			"begin": "<([a-z]+[a-z0-9]*)>",
+			"end": "</\\1>",
+			"contentName": "source.html",
+			"patterns": [
+				{ "include": "#inline-html-interpolation" },
+				{ "include": "source.html"}
+			]
+		},
+		"inline-html-interpolation": {
+			"patterns": [ 
+                {
+                    "name": "support.variable.interpolation.wren",
+                    "match": "{{.+}}"
+                }
+			]
+		},
+		"strings-interpolation": {
+			"patterns": [
+				{
+					"name": "keyword.interpolation.wren",
+					"match": "%\\(.+?\\)"
+				}
+			]
+		},
+		"queries": {
+			"name": "markup.italic.query.wren",
+			"begin": "`",
+			"end": "`"
+		}
+	}
 }
