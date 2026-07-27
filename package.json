@@ -3,6 +3,9 @@
   "displayName": "Bialet (Wren)",
   "description": "Syntax highlighting for the Bialet framework, based on the Wren language.",
   "version": "0.0.1",
+  "repository": {
+    "url": "https://github.com/bialet/bialet.vim"
+  },
   "engines": {
     "vscode": "^1.125.0"
   },
@@ -10,16 +13,25 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "wren",
-      "aliases": ["Wren", "wren"],
-      "extensions": [".wren"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "wren",
-      "scopeName": "source.wren",
-      "path": "./syntaxes/bialet.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "wren",
+        "aliases": [
+          "Wren",
+          "wren"
+        ],
+        "extensions": [
+          ".wren"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "wren",
+        "scopeName": "source.wren",
+        "path": "./syntaxes/bialet.tmLanguage.json"
+      }
+    ]
   }
 }
