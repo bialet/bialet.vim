@@ -3,14 +3,21 @@
   "displayName": "Bialet (Wren)",
   "description": "Syntax highlighting for the Bialet framework, based on the Wren language.",
   "version": "0.0.1",
+  "publisher": "bialet",
+  "icon": "images/icon.png",
   "repository": {
-    "url": "https://github.com/bialet/bialet.vim"
+    "type": "git",
+    "url": "https://github.com/bialet/bialet.vim.git"
   },
   "engines": {
     "vscode": "^1.125.0"
   },
   "categories": [
     "Programming Languages"
+  ],
+  "keywords": [
+    "wren",
+    "bialet"
   ],
   "contributes": {
     "languages": [
