@@ -3,6 +3,9 @@
 	"scopeName": "source.wren",
 	"patterns": [
 		{
+			"include": "#comments"
+		},
+		{
 			"include": "#keywords"
 		},
 		{
@@ -19,6 +22,19 @@
 		}
 	],
 	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.double-slash.wren",
+					"match": "//.*$"
+				},
+				{
+					"name": "comment.block.wren",
+					"begin": "/\\*",
+					"end": "\\*/"
+				}
+			]
+		},
 		"keywords": {
 			"patterns": [
 				{
@@ -73,6 +89,9 @@
 					"name": "support.variable.interpolation.wren",
 					"match": "{{.+}}",
 					"patterns": [
+						{
+							"include": "#comments"
+						},
 						{
 							"include": "#keywords"
 						},
