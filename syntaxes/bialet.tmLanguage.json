@@ -20,28 +20,33 @@
 	],
 	"repository": {
 		"keywords": {
-			"patterns": [{
-				"name": "keyword.reserved.wren",
-				"match": "\\b(as|break|class|construct|continue|else|false|for|foreign|if|import|in|is|null|return|static|super|this|true|var|while)\\b"
-			}]
+			"patterns": [
+				{
+					"name": "keyword.reserved.wren",
+					"match": "\\b(as|break|class|construct|continue|else|false|for|foreign|if|import|in|is|null|return|static|super|this|true|var|while)\\b"
+				}
+			]
 		},
 		"classes": {
-			"patterns": [{
-				"name": "support.type.wren",
-				"match": "\\b(Bool|Class|Fiber|Fn|List|Map|Null|Num|Object|Range|Sequence|String|System|Request|Response|Cookie|Session|Json|Util|Config|Db|Http|Date|File|Markdown)\\b"
-			},
-			{
-				"name": "support.function.wren",
-				"match": "\\.\\s*(count|map|query|fetch|first|val|toNum|toBool|save|order|to)\\b"
-			}
-		]
+			"patterns": [
+				{
+					"name": "support.type.wren",
+					"match": "\\b(Bool|Class|Fiber|Fn|List|Map|Null|Num|Object|Range|Sequence|String|System|Request|Response|Cookie|Session|Json|Util|Config|Db|Http|Date|File|Markdown)\\b"
+				},
+				{
+					"name": "support.function.query.wren",
+					"match": "\\.\\s*(count|map|query|fetch|first|val|toNum|toBool|save|order|to)\\b"
+				}
+			]
 		},
 		"strings": {
 			"name": "string.quoted.double.wren",
 			"begin": "(\"|')",
 			"end": "\\1",
 			"patterns": [
-				{ "include": "#strings-interpolation" },
+				{
+					"include": "#strings-interpolation"
+				},
 				{
 					"name": "constant.character.escape.wren",
 					"match": "\\\\."
@@ -54,16 +59,34 @@
 			"end": "</\\1>",
 			"contentName": "source.html",
 			"patterns": [
-				{ "include": "#inline-html-interpolation" },
-				{ "include": "source.html"}
+				{
+					"include": "#inline-html-interpolation"
+				},
+				{
+					"include": "source.html"
+				}
 			]
 		},
 		"inline-html-interpolation": {
-			"patterns": [ 
-                {
-                    "name": "support.variable.interpolation.wren",
-                    "match": "{{.+}}"
-                }
+			"patterns": [
+				{
+					"name": "support.variable.interpolation.wren",
+					"match": "{{.+}}",
+					"patterns": [
+						{
+							"include": "#keywords"
+						},
+						{
+							"include": "#classes"
+						},
+						{
+							"include": "#strings"
+						},
+						{
+							"include": "#inline-html-strings"
+						}
+					]
+				}
 			]
 		},
 		"strings-interpolation": {
