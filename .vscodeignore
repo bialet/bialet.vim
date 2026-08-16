@@ -3,5 +3,7 @@ ftdetect/
 ftplugin/
 lua/
 syntax/
+images/neovim.png
+images/vscode.png
 test.bialet
 README.md
