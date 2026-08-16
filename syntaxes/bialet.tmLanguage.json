@@ -12,13 +12,16 @@
 			"include": "#classes"
 		},
 		{
+			"include": "#inline-html-strings"
+		},
+		{
+			"include": "#inline-html-strings-doctype"
+		},
+		{
 			"include": "#operators"
 		},
 		{
 			"include": "#strings"
-		},
-		{
-			"include": "#inline-html-strings"
 		},
 		{
 			"include": "#queries"
@@ -82,7 +85,7 @@
 		},
 		"inline-html-strings": {
 			"name": "string.quoted.html.wren",
-			"begin": "<([a-z]+[a-z0-9]*)>",
+			"begin": "<([a-z]+[a-z0-9]*)[^>]*>",
 			"end": "</\\1>",
 			"contentName": "source.html",
 			"patterns": [
@@ -93,6 +96,10 @@
 					"include": "source.html"
 				}
 			]
+		},
+		"inline-html-strings-doctype": {
+			"name": "string.quoted.html.wren",
+      "match": "<!doctype html>"
 		},
 		"inline-html-interpolation": {
 			"patterns": [
