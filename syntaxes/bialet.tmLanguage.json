@@ -12,6 +12,9 @@
 			"include": "#classes"
 		},
 		{
+			"include": "#operators"
+		},
+		{
 			"include": "#strings"
 		},
 		{
@@ -52,6 +55,14 @@
 				{
 					"name": "support.function.query.wren",
 					"match": "\\.\\s*(count|map|query|fetch|first|val|toNum|toBool|save|order|to)\\b"
+				}
+			]
+		},
+		"operators": {
+			"patterns": [
+				{
+					"name": "keyword.operator.wren",
+					"match": "\\.\\.\\.|\\.\\.|<<|>>|<=|>=|==|!=|&&|\\|\\||!|~|-|\\+|\\*|/|%|&|\\^|\\||<|>|\\?|:|="
 				}
 			]
 		},
@@ -97,6 +108,9 @@
 						},
 						{
 							"include": "#classes"
+						},
+						{
+							"include": "#operators"
 						},
 						{
 							"include": "#strings"

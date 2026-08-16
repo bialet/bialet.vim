@@ -25,7 +25,7 @@ syn match wrenForeignMethod "\v^\s*foreign\s+(static\s+)?\w+"
 syn match wrenForeignClass "\v^\s*foreign\s+class"
 
 syn match wrenOperatorDef "\V\^\s\*\(!\|~\|-\|==\?\|!=\|<=\?\|>=\?\|...\?\||\|&\|+\|-\|*\|/\|%\)\ze\s\*\((\[^)]\*)\)\?\s\*{"
-syn match wrenOperator "\V!\|~\|-\|==\?\|!=\|<=\?\|>=\?\|...\?\||\|&\|+\|-\|*\|/\|%"
+syn match wrenOperator "\V...\|..\|<<\|>>\|<=\|>=\|==\|!=\|&&\|||\|!\|~\|-\|+\|*\|/\|%\|&\|^\||\|<\|>\|?\|:\|="
 
 syn match wrenField "\v_\w+" display
 syn match wrenStaticField "\v__\w+" display
